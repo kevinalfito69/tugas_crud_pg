@@ -1,6 +1,6 @@
 import psycopg2
 import os
-
+# koneksi database
 db = psycopg2.connect(
             host="localhost",
             port="5432",
@@ -8,7 +8,7 @@ db = psycopg2.connect(
             database="toko_sembako",
             password="admin")
 
-
+# input data
 def insert_data(db):
   nama = input("Masukan nama barang: ")
   harga = input("Masukan harga barang: ")
@@ -20,7 +20,7 @@ def insert_data(db):
   db.commit()
   print("{} data berhasil disimpan".format(cursor.rowcount))
 
-
+# tampil data?
 def show_data(db):
   cursor = db.cursor()
   sql = "SELECT * FROM toko_sembako"
@@ -33,7 +33,7 @@ def show_data(db):
     for data in results:
       print(data)
 
-
+# update data
 def update_data(db):
   cursor = db.cursor()
   show_data(db)
@@ -49,7 +49,7 @@ def update_data(db):
   db.commit()
   print("{} data berhasil diubah".format(cursor.rowcount))
 
-
+# hapusdata
 def delete_data(db):
   cursor = db.cursor()
   show_data(db)
@@ -60,7 +60,7 @@ def delete_data(db):
   db.commit()
   print("{} data berhasil dihapus".format(cursor.rowcount))
 
-
+#Cari data
 def search_data(db):
   cursor = db.cursor()
   keyword = input("Kata kunci: ")
