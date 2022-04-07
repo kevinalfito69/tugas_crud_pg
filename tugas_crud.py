@@ -64,8 +64,8 @@ def delete_data(db):
 def search_data(db):
   cursor = db.cursor()
   keyword = input("Kata kunci: ")
-  sql = "SELECT * FROM toko_sembako WHERE nama_barang LIKE %s OR harga_barang LIKE %s"
-  val = ("%{}%".format(keyword), "%{}%".format(keyword))
+  sql = "SELECT * FROM toko_sembako WHERE nama_barang LIKE'" + keyword + "'"
+  val     = ("%{}%".format(keyword), "%{}%".format(keyword),"%{}%".format(keyword))
   cursor.execute(sql, val)
   results = cursor.fetchall()
   
